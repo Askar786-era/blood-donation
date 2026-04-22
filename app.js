@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = window.location.origin + '/api';
 
 // Handle Donor Registration (STF2.html)
 const donorForm = document.getElementById('donorForm');

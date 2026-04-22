@@ -16,8 +16,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '')));
 
+// Serve the main page at the root URL
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'STF.html'));
+});
+
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/stranger_to_friends')
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/stranger_to_friends';
+mongoose.connect(MONGODB_URI)
     .then(() => console.log("Connected to MongoDB successfully!"))
     .catch(err => console.error("MongoDB connection error:", err));
 
